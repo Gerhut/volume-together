@@ -1,0 +1,19 @@
+{
+  "name": "volume-together",
+  "version": "1.0.0",
+  "description": "WebSocket demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gerhut/volume-together.git"
+  },
+  "author": "George Chung <Gerhut@GMail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gerhut/volume-together/issues"
+  },
+  "homepage": "https://github.com/Gerhut/volume-together#readme"
+}
