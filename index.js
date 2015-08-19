@@ -1,25 +1,32 @@
 var http = require('http')
 var path = require('path')
 
-var express = require('express')
-var socketio = require('socket.io')
+var connect = require('connect')
+var serveStatic = require('serve-static')
+var WebSocket = require('ws')
+var WebSocketServer = WebSocket.Server
 
-var app = express()
-var server = require('http').Server(app)
-var io = socketio(server)
+var app = connect()
+var server = http.createServer(app)
+var wsServer = new WebSocketServer({server: server})
 
-io.serveClient(false)
-io.on('connection', function (socket) {
-  socket.on('volume', function (volume) {
-    for (var id in io.connected) {
-      var client = io.connected[id]
-      if (client != socket) {
-        client.emit('volume', volume)
+var currentMessage = 0
+
+wsServer.on('connection', function (wsClient) {
+  wsClient.send(currentMessage)
+  wsClient.on('message', function (message) {
+    currentMessage = message
+    var wsClients = wsServer.clients
+    for (var i = 0, l = wsClients.length; i < l; i++) {
+      var iWsClient = wsClients[i]
+      if (iWsClient.readyState == WebSocket.OPEN
+        && iWsClient !== wsClient) {
+        iWsClient.send(currentMessage)
       }
     }
   })
 })
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(serveStatic(path.join(__dirname, 'public')))
 
 server.listen(process.env.PORT || 3000)
