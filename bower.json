@@ -1,0 +1,14 @@
+{
+  "name": "volume-together",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Gerhut/volume-together",
+  "authors": [
+    "George Chung <Gerhut@GMail.com>"
+  ],
+  "description": "WebSocket demo",
+  "license": "ISC",
+  "dependencies": {
+    "normalize.css": "~3.0.3",
+    "jquery-ui": "~1.11.4"
+  }
+}

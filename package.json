@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "WebSocket demo",
   "main": "index.js",
+  "scripts": {
+    "install": "bower install",
+    "frontend": "gulp",
+    "start": "npm run frontend && node index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Gerhut/volume-together.git"
@@ -15,6 +20,7 @@
   "homepage": "https://github.com/Gerhut/volume-together#readme",
   "dependencies": {
     "connect": "^3.4.0",
+    "gulp": "^3.9.0",
     "serve-static": "^1.10.0",
     "ws": "^0.7.2"
   },
